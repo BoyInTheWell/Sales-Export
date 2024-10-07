@@ -12,7 +12,7 @@ window.addEventListener('load', (e) => {
         window.location.href = url + `?redirect_uri=${REDIRECT_URI}&client_id=${CLIENT_ID}&scope=${SCOPE}&state=${STATE}`;
     });
     const currentURL = new URL(window.location.href)
-    console.log(currentURL.search());
+    console.log(currentURL.search);
     
 })
 
