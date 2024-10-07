@@ -7,8 +7,12 @@ const STATE = '*Bpo2024*';
 const SCOPE = 'sales';
 const url = `https://api.contaazul.com/auth/authorize`
 
+document.getElementById('send-call').addEventListener('click', () => {
+    window.location.href = url + `?redirect_uri=${REDIRECT_URI}&client_id=${CLIENT_ID}&scope=${SCOPE}&state=${STATE}`;
+});
 
-async function fetchAsync (url) {
+
+/* async function fetchAsync (url) {
     console.log("Starting up!");
     
     let response = await fetch(url + `?redirect_uri=${REDIRECT_URI}&client_id=${CLIENT_ID}&scope=${SCOPE}&state=${STATE}`,
@@ -23,7 +27,7 @@ async function fetchAsync (url) {
     return data;
   }
 
-fetchAsync (url)
+fetchAsync (url) */
 
 /* async function fetchAsync(url) {
     console.log("Clicando");
