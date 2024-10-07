@@ -7,9 +7,14 @@ const STATE = '*Bpo2024*';
 const SCOPE = 'sales';
 const url = `https://api.contaazul.com/auth/authorize`
 
-document.getElementById('send-call').addEventListener('click', () => {
-    window.location.href = url + `?redirect_uri=${REDIRECT_URI}&client_id=${CLIENT_ID}&scope=${SCOPE}&state=${STATE}`;
-});
+window.addEventListener('load', (e) => {
+    document.getElementById('send-call').addEventListener('click', () => {
+        window.location.href = url + `?redirect_uri=${REDIRECT_URI}&client_id=${CLIENT_ID}&scope=${SCOPE}&state=${STATE}`;
+    });
+    const currentURL = new URL(window.location.href)
+    console.log(currentURL.search());
+    
+})
 
 
 /* async function fetchAsync (url) {
