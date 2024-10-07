@@ -12,9 +12,10 @@ async function fetchAsync (url) {
     console.log("Starting up!");
     
     let response = await fetch(url + `?redirect_uri=${REDIRECT_URI}&client_id=${CLIENT_ID}&scope=${SCOPE}&state=${STATE}`,
-       {method: "GET",
-        mode: "no-cors"
-       }
+       {
+            method: "GET",
+            mode: "no-cors"
+       }   
     );
     let data = response.json;
     console.log(data);
