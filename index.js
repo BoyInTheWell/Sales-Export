@@ -9,10 +9,14 @@ const url = `https://api.contaazul.com/auth/authorize`
 
 window.addEventListener('load', (e) => {
     document.getElementById('send-call').addEventListener('click', () => {
-        window.location.href = url + `?redirect_uri=${REDIRECT_URI}&client_id=${CLIENT_ID}&scope=${SCOPE}&state=${STATE}`;
+        const currentURLParams = new URL(window.location.href).searchParams
+        if (currentURLParams.get("code") === null) {
+            window.location.href = url + `?redirect_uri=${REDIRECT_URI}&client_id=${CLIENT_ID}&scope=${SCOPE}&state=${STATE}`;
+        }
+        else{
+            console.log(currentURLParams.get("code"));
+        }
     });
-    const currentURL = new URL(window.location.href)
-    console.log(currentURL.search);
     
 })
 
