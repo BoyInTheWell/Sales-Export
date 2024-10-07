@@ -8,18 +8,42 @@ const SCOPE = 'sales';
 const url = `https://api.contaazul.com/auth/authorize`
 
 window.addEventListener('load', (e) => {
-    document.getElementById('send-call').addEventListener('click', () => {
-        const currentURLParams = new URL(window.location.href).searchParams
-        if (currentURLParams.get("code") === null) {
+    const currentURLParams = new URL(window.location.href).searchParams
+    if (currentURLParams.get("code") === null) {
+        document.getElementById('send-call').addEventListener('click', () => {
             window.location.href = url + `?redirect_uri=${REDIRECT_URI}&client_id=${CLIENT_ID}&scope=${SCOPE}&state=${STATE}`;
-        }
-        else{
-            console.log(currentURLParams.get("code"));
-        }
-    });
-    
-})
+        });
+    }
+    else{   
+        async function getToken(code) {
 
+            const data = new URLSearchParams();
+            data.append('grant_type', 'authorization_code');
+            data.append('redirect_uri', REDIRECT_URI);
+            data.append('code', code)
+
+            let clientIDandSecret = window.btoa(CLIENT_ID + ':' + 'pI0RJlEPPVIAgk1baPccSKCxEsUf1CcE')
+            console.log(clientIDandSecret);
+            
+            let response = await fetch(`https://api.contaazul.com/oauth2/token?grant_type=authorization_code&redirect_uri=${REDIRECT_URI}&code=${code}`, 
+            {
+                method : "POST",
+                headers: {
+                    'Accept': '*/*',
+                    'Accept-Encoding': 'gzip, deflate, br',
+                    'Connection': 'keep-alive',
+                    'Authorization': `Basic ${clientIDandSecret}`,
+                },
+               /*  body: data, */
+            }
+        );
+            console.log(response);
+            
+        }
+        getToken(currentURLParams.get("code"))
+        console.log(currentURLParams.get("code"));
+    }
+})
 
 /* async function fetchAsync (url) {
     console.log("Starting up!");
