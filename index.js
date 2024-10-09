@@ -41,9 +41,8 @@ window.addEventListener('load', (e) => {
             }
         );
             console.log(response.json());
-
-            ACESS_TOKEN = JSON.parse(response.json())['acess_token'];
-            REFRESH_TOKEN = JSON.parse(response.json())['refresh_token'];
+            ACESS_TOKEN = response['acess_token'];
+            REFRESH_TOKEN = response['refresh_token'];
             console.log(ACESS_TOKEN);
 
             alert("A sale is about to be created!");
@@ -55,7 +54,8 @@ window.addEventListener('load', (e) => {
                     {
                     "description": "Atari Game Boy (Ultimate Deluxe Edition)",
                     "quantity": 2,
-                    "value": 350
+                    "value": 350,
+                    "id": '3c32506d-46ab-450b-8250-d02b37d96b50'
                     }
                     ],
                     "payment": {
