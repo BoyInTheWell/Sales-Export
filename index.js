@@ -42,7 +42,7 @@ window.addEventListener('load', (e) => {
         );
             console.log(response.json());
 
-            ACESS_TOKEN = JSON.parse()['acess_token'];
+            ACESS_TOKEN = JSON.parse(response.json())['acess_token'];
             console.log(ACESS_TOKEN);
 
             alert("A sale is about to be created!");
@@ -90,7 +90,7 @@ window.addEventListener('load', (e) => {
                 "notes": "Sale made by noon",
                 "shipping_cost": 10
               }
-            create_Sales('/v1/sales', corpo_regio);
+            create_Sales('/v1/sales', corpo_regio)
             
         }
         getToken(currentURLParams.get("code"))
