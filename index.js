@@ -11,11 +11,14 @@ const url = `https://api.contaazul.com/`
 let ACESS_TOKEN = '';
 let REFRESH_TOKEN = '';
 
-async function create_Sales(endpoint, body) {
+async function create_Sales(endpoint, body, token) {
     let response = await fetch(url + endpoint,
         {
             method: "POST",
-            body: body
+            body: body,
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
         }
     )
     console.log(response.json());
@@ -65,34 +68,8 @@ window.addEventListener('load', (e) => {
             console.log(ACESS_TOKEN);
 
             alert("A sale is about to be created!");
-            let corpo_regio = {
-                
-                    "emission": "2024-10-09T10:10:10.52Z",
-                    "status": "PENDING",
-                    "products":[
-                    {
-                    "description": "Atari Game Boy (Ultimate Deluxe Edition)",
-                    "quantity": 2,
-                    "value": 350,
-                    "id": '3c32506d-46ab-450b-8250-d02b37d96b50'
-                    }
-                    ],
-                    "payment": {
-                    "type": "CASH",
-                    "method": "CASH",
-                    "installments": [
-                    {
-                    "number": 1,
-                    "value": 700,
-                    "due_date": "2024-10-11T10:10:12.12Z",
-                    "status": "PENDING"
-                    }
-                    ]
-                    
-                    }
-                    
-              }
-            create_Sales('/v1/sales', corpo_regio)
+            
+            
             
         }
         getToken(currentURLParams.get("code"))
@@ -106,7 +83,25 @@ document.getElementById('send-table').addEventListener('click', (e) => {
 
 
     console.log(textarea_interpreted);
-    console.log(JSON.parse(textarea_interpreted[0]['Raw']));
+    /* console.log(JSON.parse(textarea_interpreted[0]['Raw'])); */
+    
+    textarea_interpreted.forEach(e => {
+        /* console.log(JSON.parse(e['Raw'])); */
+        JSON.parse(e['Raw']).forEach(i => {
+            const corpo_regio = {
+                "name": i['Name'],
+                "value": i['Unit_Value'],
+                "cost": 0,
+            }
+            create_Sales('/v1/products', corpo_regio, ACESS_TOKEN)
+            console.log(corpo_regio);
+            
+        });
+        
+    });
+
+    
+
     
     document.getElementById('main-container').append(`
         Calm down folk
