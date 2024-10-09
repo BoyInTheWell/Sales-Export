@@ -39,7 +39,7 @@ window.addEventListener('load', (e) => {
                 },
             }
         );
-            console.log(response);
+            console.log(response.json());
             ACESS_TOKEN = response.acess_token;
             console.log(ACESS_TOKEN);
             
