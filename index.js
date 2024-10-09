@@ -3,9 +3,15 @@
 
 const REDIRECT_URI = 'https://boyinthewell.github.io/Sales-Export/';
 const CLIENT_ID = 'socLQDIifg0mqahAeMjDTcBo2xJITe3A';
+const CLIENT_SECRET = 'pI0RJlEPPVIAgk1baPccSKCxEsUf1CcE';
+const clientIDandSecret = window.btoa(CLIENT_ID + ':' + CLIENT_SECRET)
 const STATE = '*Bpo2024*';
 const SCOPE = 'sales';
 const url = `https://api.contaazul.com/auth/authorize`
+let ACESS_TOKEN = '';
+let REFRESH_TOKEN = '';
+
+
 
 window.addEventListener('load', (e) => {
     const currentURLParams = new URL(window.location.href).searchParams
@@ -22,58 +28,24 @@ window.addEventListener('load', (e) => {
             data.append('redirect_uri', REDIRECT_URI);
             data.append('code', code)
 
-            let clientIDandSecret = window.btoa(CLIENT_ID + ':' + 'pI0RJlEPPVIAgk1baPccSKCxEsUf1CcE')
             console.log(clientIDandSecret);
-            
+            alert(`https://api.contaazul.com/oauth2/token?grant_type=authorization_code&redirect_uri=${REDIRECT_URI}&code=${code}`)
+        
             let response = await fetch(`https://api.contaazul.com/oauth2/token?grant_type=authorization_code&redirect_uri=${REDIRECT_URI}&code=${code}`, 
             {
                 method : "POST",
                 headers: {
-                    'Accept': '*/*',
-                    'Accept-Encoding': 'gzip, deflate, br',
-                    'Connection': 'keep-alive',
                     'Authorization': `Basic ${clientIDandSecret}`,
                 },
-               /*  body: data, */
             }
         );
             console.log(response);
+            ACESS_TOKEN = response.acess_token;
+            console.log(ACESS_TOKEN);
+            
             
         }
         getToken(currentURLParams.get("code"))
         console.log(currentURLParams.get("code"));
     }
 })
-
-/* async function fetchAsync (url) {
-    console.log("Starting up!");
-    
-    let response = await fetch(url + `?redirect_uri=${REDIRECT_URI}&client_id=${CLIENT_ID}&scope=${SCOPE}&state=${STATE}`,
-       {
-            method: "GET",
-            mode: "no-cors"
-       }   
-    );
-    let data = response.json;
-    console.log(data);
-    
-    return data;
-  }
-
-fetchAsync (url) */
-
-/* async function fetchAsync(url) {
-    console.log("Clicando");
-    
-    let response = await fetch(url + `?redirect_uri=${REDIRECT_URI}&client_id=${CLIENT_ID}&scope=${SCOPE}&state=${STATE}`, 
-        {
-            method : "GET",
-            mode: 'no-cors'
-        }
-    );
-    let data = response;
-    console.log(data);
-};
- 
-document.getElementById('send-call').addEventListener('click', fetchAsync(url));
-*/
