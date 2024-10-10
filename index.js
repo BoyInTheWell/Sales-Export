@@ -17,7 +17,9 @@ async function create_Sales(endpoint, body, token) {
             method: "POST",
             body: body,
             headers: {
-                Authorization: `Bearer ${token}`
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+
             }
         }
     )
