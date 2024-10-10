@@ -22,7 +22,6 @@ async function create_Sales(endpoint, body, token) {
         }
     )
     console.log(response.json());
-    alert("A sale was just created!")
 }
 
 function interpret_table( data ) {
@@ -67,10 +66,9 @@ window.addEventListener('load', (e) => {
             console.log(json_response);
             ACESS_TOKEN = json_response['access_token'];
             REFRESH_TOKEN = json_response['refresh_token'];
+
             console.log(ACESS_TOKEN);
 
-            
-            
         }
         getToken(currentURLParams.get("code"))
         console.log(currentURLParams.get("code"));
@@ -86,8 +84,6 @@ document.getElementById('send-table').addEventListener('click', (e) => {
     /* console.log(JSON.parse(textarea_interpreted[0]['Raw'])); */
     
     textarea_interpreted.forEach(e => {
-
-
         /* console.log(JSON.parse(e['Raw'])); */
         JSON.parse(e['Raw']).forEach(i => {
             const corpo_regio = {
