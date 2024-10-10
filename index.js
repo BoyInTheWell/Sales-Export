@@ -62,7 +62,7 @@ window.addEventListener('load', (e) => {
             }
         );
             
-            json_response = response.json()
+            json_response = await response.json()
             console.log(json_response);
             ACESS_TOKEN = json_response['access_token'];
             REFRESH_TOKEN = json_response['refresh_token'];
