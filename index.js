@@ -77,6 +77,8 @@ window.addEventListener('load', (e) => {
 
 document.getElementById('send-token').addEventListener('click', (e) => {
     ACESS_TOKEN = document.getElementById('token_paste').value;
+    console.log(ACESS_TOKEN);
+    
 })
 
 document.getElementById('send-table').addEventListener('click', (e) => {
