@@ -64,20 +64,11 @@ window.addEventListener('load', (e) => {
             
             json_response = response.json()
             console.log(json_response);
-<<<<<<< HEAD
             ACESS_TOKEN = json_response['access_token'];
             REFRESH_TOKEN = json_response['refresh_token'];
 
             console.log(ACESS_TOKEN);
 
-=======
-            ACESS_TOKEN = json_response['acess_token'];
-            REFRESH_TOKEN = json_response['refresh_token'];
-            console.log(ACESS_TOKEN);
-
-            
-            
->>>>>>> 8860694d765e5aecb3869456570bb00b2bfedc91
         }
         getToken(currentURLParams.get("code"))
         console.log(currentURLParams.get("code"));
@@ -109,11 +100,5 @@ document.getElementById('send-table').addEventListener('click', (e) => {
         
     });
     
-<<<<<<< HEAD
  
-=======
-    document.getElementById('main-container').append(`
-        Calm down folk
-        `)
->>>>>>> 8860694d765e5aecb3869456570bb00b2bfedc91
 })
