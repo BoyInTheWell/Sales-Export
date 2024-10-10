@@ -62,13 +62,13 @@ window.addEventListener('load', (e) => {
                 },
             }
         );
-            console.log(response.json());
-            ACESS_TOKEN = response['acess_token'];
-            REFRESH_TOKEN = response['refresh_token'];
+            
+            json_response = response.json()
+            console.log(json_response);
+            ACESS_TOKEN = json_response['acess_token'];
+            REFRESH_TOKEN = json_response['refresh_token'];
             console.log(ACESS_TOKEN);
 
-            alert("A sale is about to be created!");
-            
             
             
         }
@@ -86,6 +86,8 @@ document.getElementById('send-table').addEventListener('click', (e) => {
     /* console.log(JSON.parse(textarea_interpreted[0]['Raw'])); */
     
     textarea_interpreted.forEach(e => {
+
+
         /* console.log(JSON.parse(e['Raw'])); */
         JSON.parse(e['Raw']).forEach(i => {
             const corpo_regio = {
@@ -99,9 +101,6 @@ document.getElementById('send-table').addEventListener('click', (e) => {
         });
         
     });
-
-    
-
     
     document.getElementById('main-container').append(`
         Calm down folk
