@@ -92,8 +92,6 @@ document.getElementById('send-table').addEventListener('click', (e) => {
     /* console.log(JSON.parse(textarea_interpreted[0]['Raw'])); */
     
     textarea_interpreted.forEach(e => {
-
-
         /* console.log(JSON.parse(e['Raw'])); */
         JSON.parse(e['Raw']).forEach(i => {
             const corpo_regio = {
@@ -106,6 +104,13 @@ document.getElementById('send-table').addEventListener('click', (e) => {
             
         });
         
+        const corpo_sanum ={
+            "name": e['Cliente'],
+            "person_type": 'NATURAL',
+            "document": e['Documento']
+        }
+        create_Sales('v1/costumers', JSON.stringify(corpo_sanum), ACESS_TOKEN)
+
     });
     
  
