@@ -101,7 +101,7 @@ document.getElementById('send-table').addEventListener('click', (e) => {
                 "value": i['Unit_Value'],
                 "cost": 0,
             }
-            create_Sales('/v1/products', corpo_regio, ACESS_TOKEN)
+            create_Sales('v1/products', corpo_regio, ACESS_TOKEN)
             console.log(corpo_regio);
             
         });
