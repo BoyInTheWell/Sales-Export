@@ -75,6 +75,10 @@ window.addEventListener('load', (e) => {
     }
 })
 
+document.getElementById('send-token').addEventListener('click', (e) => {
+    ACESS_TOKEN = document.getElementById('token_paste').value;
+})
+
 document.getElementById('send-table').addEventListener('click', (e) => {
     const textarea_element = document.getElementById('table_paste').value;
     const textarea_interpreted = interpret_table(textarea_element)
