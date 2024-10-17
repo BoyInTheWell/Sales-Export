@@ -9,5 +9,6 @@
 
 #send-table{
     margin-top: 10px;
-    display: block;
+    margin-right: 10px;
+    display: inline;
 }
