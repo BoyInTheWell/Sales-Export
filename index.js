@@ -308,7 +308,6 @@ function interpret_table(data) {
     return objects;
 }
 
-
 async function unique_sales(url, data, token) {
     let customer = {}
     let product = []
