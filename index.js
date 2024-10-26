@@ -1,4 +1,4 @@
-import secrets from "secrets.json" with {type: "json"}; 
+import secrets from "./secrets.json" with {type: "json"}; 
 
 
 const REDIRECT_URI = 'https://boyinthewell.github.io/Sales-Export/';
