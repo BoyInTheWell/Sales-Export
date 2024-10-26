@@ -1,9 +1,9 @@
-
+import secrets from "secrets.json" with {type: "json"}; 
 
 
 const REDIRECT_URI = 'https://boyinthewell.github.io/Sales-Export/';
-const CLIENT_ID = 'socLQDIifg0mqahAeMjDTcBo2xJITe3A';
-const CLIENT_SECRET = 'pI0RJlEPPVIAgk1baPccSKCxEsUf1CcE';
+const CLIENT_ID = secrets.CLIENT_ID;
+const CLIENT_SECRET = secrets.CLIENT_SECRET;
 const clientIDandSecret = window.btoa(CLIENT_ID + ':' + CLIENT_SECRET)
 const STATE = '*Bpo2024*';
 const SCOPE = 'sales';
