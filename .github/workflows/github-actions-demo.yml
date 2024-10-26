@@ -1,3 +1,5 @@
+on: post
+
 steps:
   - name: Hide Secrets
     env:
