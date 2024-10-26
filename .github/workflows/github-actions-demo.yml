@@ -1,4 +1,4 @@
-on: post
+on: push
 
 steps:
   - name: Hide Secrets
