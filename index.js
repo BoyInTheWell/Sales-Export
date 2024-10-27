@@ -1,5 +1,4 @@
-import secrets from "./secrets.json" with {type: "json"}; 
-
+require('dotenv').config()
 
 const REDIRECT_URI = 'https://boyinthewell.github.io/Sales-Export/';
 const CLIENT_ID = secrets.CLIENT_ID;
