@@ -1,14 +1,14 @@
-require('dotenv').config()
 
 const REDIRECT_URI = 'https://boyinthewell.github.io/Sales-Export/';
-const CLIENT_ID = secrets.CLIENT_ID;
-const CLIENT_SECRET = secrets.CLIENT_SECRET;
+const CLIENT_ID = process.env.CLIENT_ID;
+const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const clientIDandSecret = window.btoa(CLIENT_ID + ':' + CLIENT_SECRET)
 const STATE = '*Bpo2024*';
 const SCOPE = 'sales';
 const url = `https://api.contaazul.com/`
 let ACESS_TOKEN = '';
 let REFRESH_TOKEN = '';
+
 
 let MASTER_PRODUCTS = [];
 
